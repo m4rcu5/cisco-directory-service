@@ -10,6 +10,7 @@ use XML::LibXML;
 # -----------------------
 
 # Bind details for LDAP server
+my $ldapHost   = 'zfm.lan';
 my $ldapBindDN = 'cn=asterisk,ou=Service Accounts,ou=Tolweg,dc=zfm,dc=lan';
 my $ldapPasswd = 'geheim';
 
@@ -34,7 +35,7 @@ my $page = $q->param('page') // 1;
 # --------------
 
 # LDAP connection
-my $ldap = Net::LDAP->new( 'zfm.lan' );
+my $ldap = Net::LDAP->new( $ldapHost );
 
 # Bind to directory with DN and password
 my $mesg = $ldap->bind( $ldapBindDN, password => $ldapPasswd );
